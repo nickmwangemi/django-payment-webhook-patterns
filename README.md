@@ -1,52 +1,24 @@
 # django-payment-webhook-patterns
 
-Demo Django project: Stripe and Mollie webhook signature verification, idempotent event storage, pytest coverage.
+Django demo: Stripe and Mollie webhook handlers with signature verification, idempotent event storage, pytest.
 
-## Quick start
-
-**Local**
+## Setup
 
 ```bash
 python -m venv .venv && source .venv/bin/activate
 pip install -r requirements.txt
 python manage.py migrate
-python manage.py runserver
 pytest
 ```
 
-**Docker**
-
-```bash
-docker compose up --build
-docker compose run --rm web pytest
-```
-
-App: http://localhost:8000/health/ (or `/` for endpoint list). Copy `.env.example` to `.env` to override defaults.
-
 ## Endpoints
 
-| Method | Path | Description |
-|--------|------|-------------|
-| GET | `/health/` | Health check |
-| POST | `/webhooks/stripe/` | Stripe signed JSON events |
-| POST | `/webhooks/mollie/` | Mollie signed webhooks (form or JSON) |
+| Method | Path |
+|--------|------|
+| GET | `/health/` |
+| POST | `/webhooks/stripe/` |
+| POST | `/webhooks/mollie/` |
 
-## Environment
+Env: `STRIPE_WEBHOOK_SECRET`, `MOLLIE_WEBHOOK_SECRET` (see `.env.example`). Defaults work for local demo.
 
-| Variable | Default |
-|----------|---------|
-| `STRIPE_WEBHOOK_SECRET` | `whsec_synthetic_demo_secret` |
-| `MOLLIE_WEBHOOK_SECRET` | `mollie_synthetic_demo_secret` |
-| `DJANGO_SECRET_KEY` | insecure dev default |
-| `DATABASE_PATH` | `db.sqlite3` in project root |
-
-## Layout
-
-```
-config/           # settings & URLs
-webhooks/handlers # verify + parse per provider
-webhooks/services # idempotent persistence
-tests/
-```
-
-MIT — see [LICENSE](LICENSE).
+MIT
