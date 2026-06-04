@@ -1,0 +1,16 @@
+services:
+  web:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      DJANGO_SECRET_KEY: ${DJANGO_SECRET_KEY:-django-insecure-demo-only}
+      DJANGO_DEBUG: ${DJANGO_DEBUG:-True}
+      STRIPE_WEBHOOK_SECRET: ${STRIPE_WEBHOOK_SECRET:-whsec_synthetic_demo_secret}
+      MOLLIE_WEBHOOK_SECRET: ${MOLLIE_WEBHOOK_SECRET:-mollie_synthetic_demo_secret}
+      DATABASE_PATH: /data/db.sqlite3
+    volumes:
+      - sqlite_data:/data
+
+volumes:
+  sqlite_data:
