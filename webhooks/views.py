@@ -71,3 +71,16 @@ def _dispatch(request, handler, handle_kwargs):
 class HealthView(View):
     def get(self, request):
         return HttpResponse("ok", content_type="text/plain")
+
+
+class IndexView(View):
+    def get(self, request):
+        return JsonResponse(
+            {
+                "health": "/health/",
+                "webhooks": {
+                    "stripe": "/webhooks/stripe/",
+                    "mollie": "/webhooks/mollie/",
+                },
+            }
+        )

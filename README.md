@@ -21,7 +21,7 @@ docker compose up --build
 docker compose run --rm web pytest
 ```
 
-App: http://localhost:8000 · Copy `.env.example` to `.env` to override defaults (local or via Compose).
+App: http://localhost:8000/health/ (or `/` for endpoint list). Copy `.env.example` to `.env` to override defaults.
 
 ## Endpoints
 
