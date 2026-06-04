@@ -4,6 +4,8 @@ Demo Django project: Stripe and Mollie webhook signature verification, idempoten
 
 ## Quick start
 
+**Local**
+
 ```bash
 python -m venv .venv && source .venv/bin/activate
 pip install -r requirements.txt
@@ -12,7 +14,14 @@ python manage.py runserver
 pytest
 ```
 
-Copy `.env.example` to `.env` if you want to override defaults.
+**Docker**
+
+```bash
+docker compose up --build
+docker compose run --rm web pytest
+```
+
+App: http://localhost:8000 · Copy `.env.example` to `.env` to override defaults (local or via Compose).
 
 ## Endpoints
 
@@ -29,6 +38,7 @@ Copy `.env.example` to `.env` if you want to override defaults.
 | `STRIPE_WEBHOOK_SECRET` | `whsec_synthetic_demo_secret` |
 | `MOLLIE_WEBHOOK_SECRET` | `mollie_synthetic_demo_secret` |
 | `DJANGO_SECRET_KEY` | insecure dev default |
+| `DATABASE_PATH` | `db.sqlite3` in project root |
 
 ## Layout
 
