@@ -49,6 +49,4 @@ webhooks/services # idempotent persistence
 tests/
 ```
 
-**Nicholas Mwangemi** — [LinkedIn](https://www.linkedin.com/in/nick-mwangemi/) · [GitHub](https://github.com/nickmwangemi)
-
 MIT — see [LICENSE](LICENSE).
